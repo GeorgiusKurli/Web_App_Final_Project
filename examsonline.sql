@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 26, 2019 at 09:17 AM
+-- Generation Time: Mar 28, 2019 at 02:24 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -38,24 +38,6 @@ CREATE TABLE `choices` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `choices`
---
-
-INSERT INTO `choices` (`id`, `choice`, `question_id`, `user_id`, `correct`, `created_at`, `updated_at`) VALUES
-(5, '22', 3, 1, 1, NULL, NULL),
-(6, '20', 3, 1, 0, NULL, NULL),
-(7, '21', 3, 1, 0, NULL, NULL),
-(8, '22', 3, 1, 1, NULL, NULL),
-(9, '2', 4, 1, 1, NULL, NULL),
-(10, '3', 4, 1, 0, NULL, NULL),
-(11, '4', 4, 1, 0, NULL, NULL),
-(12, '5', 4, 1, 0, NULL, NULL),
-(13, '2.5', 5, 1, 1, NULL, NULL),
-(14, '2 1/2', 5, 1, 1, NULL, NULL),
-(15, '10', 5, 1, 0, NULL, NULL),
-(16, '4', 5, 1, 0, NULL, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -73,11 +55,11 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2014_10_12_000000_create_users_table', 1),
-(2, '2014_10_12_100000_create_password_resets_table', 1),
-(3, '2019_03_23_081001_create_tests_table', 1),
-(4, '2019_03_23_093513_create_questions_table', 1),
-(5, '2019_03_23_093756_create_choices_table', 1);
+(6, '2014_10_12_000000_create_users_table', 1),
+(7, '2014_10_12_100000_create_password_resets_table', 1),
+(8, '2019_03_23_081001_create_tests_table', 1),
+(9, '2019_03_23_093513_create_questions_table', 1),
+(10, '2019_03_23_093756_create_choices_table', 1);
 
 -- --------------------------------------------------------
 
@@ -106,15 +88,6 @@ CREATE TABLE `questions` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `questions`
---
-
-INSERT INTO `questions` (`id`, `test_id`, `user_id`, `question`, `created_at`, `updated_at`) VALUES
-(3, 1, 1, '10+12?', '2019-03-25 04:08:47', '2019-03-25 04:08:47'),
-(4, 1, 1, '1+1', '2019-03-25 04:53:40', '2019-03-25 04:53:40'),
-(5, 1, 1, '10/4', '2019-03-25 04:54:07', '2019-03-25 04:54:07');
-
 -- --------------------------------------------------------
 
 --
@@ -130,14 +103,6 @@ CREATE TABLE `tests` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `tests`
---
-
-INSERT INTO `tests` (`id`, `test_name`, `category`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 'Maths 101', 'Maths', 1, '2019-03-25 03:52:33', '2019-03-25 03:52:33'),
-(2, 'Maths 201', 'Maths', 1, '2019-03-25 18:08:46', '2019-03-25 18:08:46');
-
 -- --------------------------------------------------------
 
 --
@@ -152,16 +117,17 @@ CREATE TABLE `users` (
   `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `active` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'georgiuskurli@gmail.com', NULL, '$2y$10$IwIqCVLNTAt0I2GHo.uM.eYZzV.qjVyVXOqR5w874LfSZ7JAxWL5S', 'NwtPe4X8QvEo32JIZWNhhVXh3O1Sw3pJirRRXN2N9gp11VUx2TQF372Jq6uj', '2019-03-25 03:52:03', '2019-03-25 03:52:03'),
-(2, 'steven', 'steven@gmail.com', NULL, '$2y$10$c8iKlSrQ3UO0bsq1slrQx.NmznpONgU14Jv1UPI.U/rMO3TKAlIje', NULL, '2019-03-25 23:33:20', '2019-03-25 23:33:20');
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `active`) VALUES
+(1, 'Admin', 'georgiuskurli@gmail.com', NULL, '$2y$10$EWhr9Z1rx6Bm01FjXZACmu1zha6JwslQ5r8jgbMJUYWZwvBLuRyE.', NULL, '2019-03-26 21:17:35', '2019-03-26 21:17:35', 1),
+(2, 'test', 'test@gmail.com', NULL, '$2y$10$EDMjMqrB6No31SIZcH8zvOLfI8cDcEBt.v83CmPnscBFVhVHz5ZAu', NULL, '2019-03-26 23:59:22', '2019-03-27 00:33:20', 0);
 
 --
 -- Indexes for dumped tables
@@ -217,25 +183,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `choices`
 --
 ALTER TABLE `choices`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tests`
 --
 ALTER TABLE `tests`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`

@@ -1,0 +1,10 @@
+div.smallFontCentered {
+	font-size: 15px;
+	text-align: center;
+	padding: 20px;
+	color: #8190A5;
+}
+
+body{
+	background-color: #f2f2f2;
+}
