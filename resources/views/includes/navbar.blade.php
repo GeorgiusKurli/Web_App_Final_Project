@@ -3,7 +3,7 @@
 		<!-- logo -->
 		<a class="navbar-brand mb-1" href="{{ url('/') }}">
 			<!-- logo ratio approx: 4.5:1 -->
-			<img src="{{asset('EO2.png') }}" style="width: 120px; height: 27px;">
+			<img src="{{secure_asset('EO2.png') }}" style="width: 120px; height: 27px;">
 		</a>
 
 		<!-- navbar toggler for hamburger menu -->
